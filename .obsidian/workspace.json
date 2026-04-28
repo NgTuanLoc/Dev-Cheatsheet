@@ -1,0 +1,225 @@
+{
+  "main": {
+    "id": "becc6e6a82b32836",
+    "type": "split",
+    "children": [
+      {
+        "id": "07a92c921a720478",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "435388f89f15171f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CLAUDE.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "CLAUDE"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6f2c3b10beef699c",
+    "type": "split",
+    "children": [
+      {
+        "id": "b1f115d23fc69f99",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3e81e2f6cd93c9ca",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "5bd9d8c9aa0f7f29",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "b5ebeddcc013dfc5",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "49cc9d50f8f4d656",
+    "type": "split",
+    "children": [
+      {
+        "id": "f6a06de444e2cbdc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ba98fdd5f16cf661",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "CLAUDE.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for CLAUDE"
+            }
+          },
+          {
+            "id": "0977b568a8d95810",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "CLAUDE.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from CLAUDE"
+            }
+          },
+          {
+            "id": "f94d90a65fcacd0d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "d55e77fcdb4ec68c",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "dc4133db82ac7ac8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "CLAUDE.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of CLAUDE"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "435388f89f15171f",
+  "lastOpenFiles": [
+    "02-Intermediate/10 - IDisposable and Resource Mgmt.md",
+    "02-Intermediate/09 - Memory Management and GC.md",
+    "02-Intermediate/05 - LINQ Advanced.md",
+    "02-Intermediate/17 - Configuration.md",
+    "02-Intermediate/16 - Entity Framework Core.md",
+    "02-Intermediate/18 - Logging.md",
+    "02-Intermediate/19 - Middleware.md",
+    "02-Intermediate/20 - Testing.md",
+    "02-Intermediate/19 - Middleware.md.tmp.3116.1777346465825",
+    "00-Index/Learning Path.md",
+    "02-Intermediate/18 - Logging.md.tmp.3116.1777346426670",
+    "02-Intermediate/17 - Configuration.md.tmp.3116.1777346391995",
+    "00-Index/Master Index.md",
+    "02-Intermediate/07 - Threading and Concurrency.md",
+    "02-Intermediate/15 - REST API.md",
+    "02-Intermediate/15 - REST API.md.tmp.3116.1777346311373",
+    "02-Intermediate/11 - Reflection and Attributes.md",
+    "02-Intermediate/12 - Serialization.md",
+    "02-Intermediate/13 - Dependency Injection.md",
+    "02-Intermediate/14 - ASP.NET Core Basics.md",
+    "02-Intermediate/14 - ASP.NET Core Basics.md.tmp.3116.1777346273526",
+    "CLAUDE.md",
+    "02-Intermediate/10 - IDisposable and Resource Mgmt.md.tmp.3116.1777346120437",
+    "02-Intermediate/06 - Async and Await.md",
+    "02-Intermediate/09 - Memory Management and GC.md.tmp.3116.1777346082523",
+    "01-Beginner/10 - LINQ Basics.md",
+    "02-Intermediate/08 - Synchronization Primitives.md",
+    "02-Intermediate/08 - Synchronization Primitives.md.tmp.3116.1777346038689",
+    "02-Intermediate/04 - Lambda and Functional.md",
+    "02-Intermediate/03 - Delegates and Events.md",
+    "01-Beginner/07 - Strings.md",
+    "02-Intermediate/06 - Async and Await.md.tmp.3116.1777345961225",
+    "02-Intermediate/02 - Generics.md",
+    "02-Intermediate/01 - OOP Advanced.md",
+    "02-Intermediate",
+    "01-Beginner/09 - File IO.md"
+  ]
+}
