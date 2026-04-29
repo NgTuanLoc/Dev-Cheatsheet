@@ -123,4 +123,4 @@ aliases: [Roadmap, Curriculum]
 - **Don't skip Stage 3** — async/threading/memory mistakes cause 80% of production incidents.
 - Build the checkpoint project at each stage. Reading without coding doesn't stick.
 - Revisit earlier notes as you advance — concepts deepen with experience.
-- Use [[Master Index]] to jump around; this path is recommended, not mandatory.
+- Use [[Dotnet Master Index]] to jump around; this path is recommended, not mandatory.

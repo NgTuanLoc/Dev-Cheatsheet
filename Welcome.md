@@ -1,17 +1,20 @@
 ---
-tags: [dotnet, home]
+tags: [home]
 aliases: [Home, Start]
 ---
 
-# Welcome — .NET Core Cheatsheet
+# Welcome
 
-A structured, teacher-authored notebook covering .NET Core from beginner to advanced.
+A structured, teacher-authored cheatsheet vault covering multiple technical topics from beginner to advanced.
 
-## Where to go
+## Pick a topic
 
-- 📘 **[[Master Index]]** — full table of contents
-- 🗺️ **[[Learning Path]]** — recommended reading order
-- 🚀 **Start coding?** Jump to [[01 - Dotnet Overview]]
+| Topic | Index | Path | Start here |
+|-------|-------|------|------------|
+| .NET Core | [[Dotnet Master Index]] | [[Dotnet Learning Path]] | [[01 - Dotnet Overview]] |
+| Database (PostgreSQL-primary) | [[Database Master Index]] | [[Database Learning Path]] | [[01 - Database Overview]] |
+
+---
 
 ## How notes are organized
 
@@ -25,8 +28,20 @@ Every note follows the same structure:
 6. **Gotchas & Tips** — pitfalls
 7. **See Also** — related notes
 
-## Folders
+---
 
-- `01-Beginner/` — language fundamentals (10 notes)
-- `02-Intermediate/` — async, DI, web, data, runtime (20 notes)
-- `03-Advanced/` — architecture, performance, infra (18 notes)
+## Vault structure
+
+```
+/
+├── Dotnet/          ← .NET Core (48 notes)
+│   ├── 01-Beginner/    (10 notes — language fundamentals)
+│   ├── 02-Intermediate/ (20 notes — async, DI, web, data, runtime)
+│   └── 03-Advanced/    (18 notes — architecture, performance, infra)
+└── Database/        ← Databases (48 notes, PostgreSQL-primary)
+    ├── 01-Beginner/    (10 notes — SQL fundamentals)
+    ├── 02-Intermediate/ (20 notes — schema, transactions, tuning)
+    └── 03-Advanced/    (18 notes — distribution, analytics, AI)
+```
+
+For shared authoring conventions see `CLAUDE.md` at vault root; per-topic rules live in each topic folder's own `CLAUDE.md`.

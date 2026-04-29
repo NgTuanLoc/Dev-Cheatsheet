@@ -1,17 +1,17 @@
 ---
 tags: [dotnet, index]
-aliases: [Index, Home]
+aliases: [Dotnet Index, Dotnet Home]
 ---
 
-# Master Index — .NET Core Cheatsheet
+# Dotnet Master Index — .NET Core Cheatsheet
 
-> **Single entry point** for the entire vault. Browse by level or jump straight to a topic.
+> **Single entry point** for the .NET topic. Browse by level or jump straight to a topic.
 
 ---
 
 ## Start Here
 
-- [[Learning Path]] — recommended reading order
+- [[Dotnet Learning Path]] — recommended reading order
 - New to .NET? Begin with [[01 - Dotnet Overview]]
 
 ---

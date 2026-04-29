@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CLAUDE.md",
+                "file": "03-Advanced/05 - Security and Auth.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CLAUDE"
+              "title": "05 - Security and Auth"
             }
           }
         ]
@@ -185,6 +185,16 @@
   },
   "active": "435388f89f15171f",
   "lastOpenFiles": [
+    "03-Advanced/06 - Performance Optimization.md",
+    "03-Advanced/07 - Memory Leaks and Profiling.md",
+    "03-Advanced/10 - Parallel and Dataflow.md",
+    "03-Advanced/11 - Caching.md",
+    "03-Advanced/12 - Background Services.md",
+    "03-Advanced/13 - SignalR.md",
+    "03-Advanced/14 - gRPC.md",
+    "02-Intermediate/07 - Threading and Concurrency.md",
+    "00-Index/Master Index.md",
+    "CLAUDE.md",
     "02-Intermediate/10 - IDisposable and Resource Mgmt.md",
     "02-Intermediate/09 - Memory Management and GC.md",
     "02-Intermediate/05 - LINQ Advanced.md",
@@ -197,8 +207,6 @@
     "00-Index/Learning Path.md",
     "02-Intermediate/18 - Logging.md.tmp.3116.1777346426670",
     "02-Intermediate/17 - Configuration.md.tmp.3116.1777346391995",
-    "00-Index/Master Index.md",
-    "02-Intermediate/07 - Threading and Concurrency.md",
     "02-Intermediate/15 - REST API.md",
     "02-Intermediate/15 - REST API.md.tmp.3116.1777346311373",
     "02-Intermediate/11 - Reflection and Attributes.md",
@@ -206,20 +214,12 @@
     "02-Intermediate/13 - Dependency Injection.md",
     "02-Intermediate/14 - ASP.NET Core Basics.md",
     "02-Intermediate/14 - ASP.NET Core Basics.md.tmp.3116.1777346273526",
-    "CLAUDE.md",
     "02-Intermediate/10 - IDisposable and Resource Mgmt.md.tmp.3116.1777346120437",
     "02-Intermediate/06 - Async and Await.md",
     "02-Intermediate/09 - Memory Management and GC.md.tmp.3116.1777346082523",
     "01-Beginner/10 - LINQ Basics.md",
-    "02-Intermediate/08 - Synchronization Primitives.md",
     "02-Intermediate/08 - Synchronization Primitives.md.tmp.3116.1777346038689",
-    "02-Intermediate/04 - Lambda and Functional.md",
-    "02-Intermediate/03 - Delegates and Events.md",
-    "01-Beginner/07 - Strings.md",
     "02-Intermediate/06 - Async and Await.md.tmp.3116.1777345961225",
-    "02-Intermediate/02 - Generics.md",
-    "02-Intermediate/01 - OOP Advanced.md",
-    "02-Intermediate",
-    "01-Beginner/09 - File IO.md"
+    "02-Intermediate"
   ]
 }
