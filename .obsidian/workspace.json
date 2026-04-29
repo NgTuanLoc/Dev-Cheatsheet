@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03-Advanced/05 - Security and Auth.md",
-                "mode": "preview",
+                "file": "Dotnet/02-Intermediate/07 - Threading and Concurrency.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "05 - Security and Auth"
+              "title": "07 - Threading and Concurrency"
             }
           }
         ]
@@ -185,6 +185,9 @@
   },
   "active": "435388f89f15171f",
   "lastOpenFiles": [
+    "Dotnet/02-Intermediate/09 - Memory Management and GC.md",
+    "Dotnet/02-Intermediate/07 - Threading and Concurrency.md",
+    "Dotnet/02-Intermediate/06 - Async and Await.md",
     "03-Advanced/06 - Performance Optimization.md",
     "03-Advanced/07 - Memory Leaks and Profiling.md",
     "03-Advanced/10 - Parallel and Dataflow.md",
@@ -212,12 +215,9 @@
     "02-Intermediate/11 - Reflection and Attributes.md",
     "02-Intermediate/12 - Serialization.md",
     "02-Intermediate/13 - Dependency Injection.md",
-    "02-Intermediate/14 - ASP.NET Core Basics.md",
     "02-Intermediate/14 - ASP.NET Core Basics.md.tmp.3116.1777346273526",
     "02-Intermediate/10 - IDisposable and Resource Mgmt.md.tmp.3116.1777346120437",
-    "02-Intermediate/06 - Async and Await.md",
     "02-Intermediate/09 - Memory Management and GC.md.tmp.3116.1777346082523",
-    "01-Beginner/10 - LINQ Basics.md",
     "02-Intermediate/08 - Synchronization Primitives.md.tmp.3116.1777346038689",
     "02-Intermediate/06 - Async and Await.md.tmp.3116.1777345961225",
     "02-Intermediate"
