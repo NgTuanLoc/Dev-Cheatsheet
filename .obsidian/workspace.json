@@ -13,12 +13,32 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dotnet/02-Intermediate/08 - Synchronization Primitives.md",
-                "mode": "source",
+                "file": "Database/01-Beginner/02 - SQL Fundamentals.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "08 - Synchronization Primitives"
+              "title": "02 - SQL Fundamentals"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ddc58e13bfa55e9d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6f2161c1a3df8bcf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Database/00-Index/Database Master Index.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Database Master Index"
             }
           }
         ]
@@ -185,7 +205,27 @@
   },
   "active": "435388f89f15171f",
   "lastOpenFiles": [
+    "Database/01-Beginner/01 - Database Overview.md",
+    "Database/00-Index/Database Master Index.md",
+    "Dotnet/03-Advanced/06 - Performance Optimization.md",
+    "Dotnet/03-Advanced/05 - Security and Auth.md",
+    "ClaudeCode/02-Intermediate/02 - Custom Slash Commands.md",
+    "ClaudeCode/02-Intermediate/01 - Subagents.md",
+    "ClaudeCode/01-Beginner/10 - Tips and Pitfalls.md",
+    "ClaudeCode/01-Beginner/09 - Common Workflows.md",
+    "ClaudeCode/01-Beginner/08 - Plan Mode.md",
+    "ClaudeCode/01-Beginner/07 - Effective Prompting.md",
+    "ClaudeCode/01-Beginner/06 - CLAUDE.md Files.md",
+    "ClaudeCode/01-Beginner/05 - Permissions and Safety.md",
+    "ClaudeCode/01-Beginner/04 - Tools and Capabilities.md",
+    "ClaudeCode/01-Beginner/03 - Slash Commands Basics.md",
+    "Dotnet/02-Intermediate/12 - Serialization.md",
+    "Dotnet/02-Intermediate/05 - LINQ Advanced.md",
+    "ClaudeCode/03-Advanced/10 - Prompt Engineering for Code.md",
     "ClaudeCode/02-Intermediate/09 - Code Review with Claude.md",
+    "ClaudeCode/01-Beginner/02 - Installation and Setup.md",
+    "ClaudeCode/01-Beginner/01 - Claude Code Overview.md",
+    "Dotnet/02-Intermediate/08 - Synchronization Primitives.md",
     "ClaudeCode/02-Intermediate/08 - Git and PR Workflow.md",
     "ClaudeCode/02-Intermediate/07 - Output Styles.md",
     "ClaudeCode/02-Intermediate/07 - Output Styles.md.tmp.28268.1777465192403",
@@ -193,33 +233,13 @@
     "ClaudeCode/02-Intermediate/06 - Memory System.md.tmp.28268.1777465161477",
     "ClaudeCode/02-Intermediate/05 - MCP Servers Using.md",
     "ClaudeCode/02-Intermediate/04 - Hooks.md",
-    "ClaudeCode/02-Intermediate/03 - settings.json.md",
-    "ClaudeCode/02-Intermediate/02 - Custom Slash Commands.md",
-    "ClaudeCode/02-Intermediate/01 - Subagents.md",
     "ClaudeCode/02-Intermediate/01 - Subagents.md.tmp.28268.1777464953034",
-    "ClaudeCode/01-Beginner/10 - Tips and Pitfalls.md",
     "ClaudeCode/01-Beginner/10 - Tips and Pitfalls.md.tmp.28268.1777464907549",
-    "ClaudeCode/01-Beginner/09 - Common Workflows.md",
-    "ClaudeCode/01-Beginner/08 - Plan Mode.md",
     "ClaudeCode/01-Beginner/08 - Plan Mode.md.tmp.28268.1777464839235",
-    "ClaudeCode/01-Beginner/07 - Effective Prompting.md",
-    "ClaudeCode/01-Beginner/06 - CLAUDE.md Files.md",
-    "ClaudeCode/01-Beginner/05 - Permissions and Safety.md",
-    "ClaudeCode/01-Beginner/04 - Tools and Capabilities.md",
-    "ClaudeCode/01-Beginner/03 - Slash Commands Basics.md",
     "ClaudeCode/01-Beginner/03 - Slash Commands Basics.md.tmp.28268.1777464655036",
-    "ClaudeCode/01-Beginner/02 - Installation and Setup.md",
     "ClaudeCode/01-Beginner/02 - Installation and Setup.md.tmp.28268.1777464632296",
-    "ClaudeCode/01-Beginner/01 - Claude Code Overview.md",
-    "ClaudeCode/00-Index/Claude Code Learning Path.md",
-    "ClaudeCode/00-Index/Claude Code Master Index.md",
-    "ClaudeCode/CLAUDE.md",
     "ClaudeCode/03-Advanced",
     "ClaudeCode/01-Beginner",
-    "ClaudeCode/02-Intermediate",
-    "Dotnet/02-Intermediate/07 - Threading and Concurrency.md",
-    "Dotnet/02-Intermediate/09 - Memory Management and GC.md",
-    "Dotnet/02-Intermediate/06 - Async and Await.md",
-    "03-Advanced/06 - Performance Optimization.md"
+    "ClaudeCode/02-Intermediate"
   ]
 }

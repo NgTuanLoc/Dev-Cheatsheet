@@ -12,6 +12,7 @@ A multi-topic, structured, teacher-authored cheatsheet/notebook. Each top-level 
 |--------|-------|------------------------|
 | `Dotnet/` | .NET Core (C#, ASP.NET Core, EF Core, runtime) | [Dotnet/CLAUDE.md](./Dotnet/CLAUDE.md) |
 | `Database/` | Databases (PostgreSQL-primary, SQL & NoSQL) | [Database/CLAUDE.md](./Database/CLAUDE.md) |
+| `React/` | React (hooks, RSC, Next.js, Remix, ecosystem) | [React/CLAUDE.md](./React/CLAUDE.md) |
 
 ---
 
@@ -29,8 +30,14 @@ A multi-topic, structured, teacher-authored cheatsheet/notebook. Each top-level 
 │   ├── 01-Beginner/
 │   ├── 02-Intermediate/
 │   └── 03-Advanced/
-└── Database/
-    ├── CLAUDE.md           ← Database-specific rules + coverage map
+├── Database/
+│   ├── CLAUDE.md           ← Database-specific rules + coverage map
+│   ├── 00-Index/
+│   ├── 01-Beginner/
+│   ├── 02-Intermediate/
+│   └── 03-Advanced/
+└── React/
+    ├── CLAUDE.md           ← React-specific rules + coverage map
     ├── 00-Index/
     ├── 01-Beginner/
     ├── 02-Intermediate/
@@ -153,4 +160,4 @@ Each topic adds its own tags on top of these.
 | `index` | index/router pages |
 | `home` | top-level landing pages |
 
-See per-topic `CLAUDE.md` for topic-specific tags (`csharp`, `aspnetcore`, `postgresql`, `sql`, etc.).
+See per-topic `CLAUDE.md` for topic-specific tags (`csharp`, `aspnetcore`, `postgresql`, `sql`, `react`, `hooks`, `nextjs`, etc.).
