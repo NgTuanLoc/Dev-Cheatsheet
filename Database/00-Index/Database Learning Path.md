@@ -46,11 +46,12 @@ aliases: [DB Roadmap, DB Curriculum]
 
 **Goal**: Make slow queries fast. Read execution plans.
 
-1. [[05 - Indexes Advanced]]
-2. [[06 - Query Optimization]]
-3. [[10 - Window Functions]]
-4. [[07 - Views]]
-5. [[11 - Set Operations and Pivoting]]
+1. [[21 - B-Tree Internals]] — how the default index actually works, and why "indexed" queries still go slow (LIKE, casts, function-wrapped columns)
+2. [[05 - Indexes Advanced]]
+3. [[06 - Query Optimization]]
+4. [[10 - Window Functions]]
+5. [[07 - Views]]
+6. [[11 - Set Operations and Pivoting]]
 
 **Checkpoint**: Take a slow query, run `EXPLAIN ANALYZE`, identify the bottleneck, add the right index, prove improvement.
 

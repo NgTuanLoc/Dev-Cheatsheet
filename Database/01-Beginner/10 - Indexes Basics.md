@@ -177,5 +177,6 @@ SELECT * FROM users WHERE LOWER(email) = LOWER('A@B.com');
 
 - [[02 - SQL Fundamentals]]
 - [[09 - Constraints]]
+- [[21 - B-Tree Internals]] — deep dive on how the default index actually works and why it sometimes silently doesn't
 - [[05 - Indexes Advanced]]
 - [[06 - Query Optimization]]

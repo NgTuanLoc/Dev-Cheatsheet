@@ -99,7 +99,7 @@ Examples must be **runnable** — student should be able to paste into `psql` or
 | 09 | Constraints | NOT NULL, UNIQUE, CHECK, DEFAULT, FK with ON DELETE/UPDATE |
 | 10 | Indexes Basics | What an index is, B-tree default, when indexes help vs hurt |
 
-### Intermediate (02-Intermediate) — 20 notes
+### Intermediate (02-Intermediate) — 21 notes
 | # | File | Topics Covered |
 |---|------|----------------|
 | 01 | Normalization | 1NF, 2NF, 3NF, BCNF, denormalization tradeoffs |
@@ -122,6 +122,7 @@ Examples must be **runnable** — student should be able to paste into `psql` or
 | 18 | JSON and JSONB | jsonb operators, indexing JSONB with GIN, when to use vs separate table |
 | 19 | Full-Text Search | tsvector, tsquery, GIN index, ranking, language config |
 | 20 | NoSQL Fundamentals | Document (Mongo), key-value (Redis), wide-column (Cassandra), graph (Neo4j) |
+| 21 | B-Tree Internals | B+tree structure, sargability, prefix vs leading-wildcard `LIKE`, function-wrapped columns, implicit-cast traps, `text_pattern_ops`, fixes (`pg_trgm`, FTS, reverse-string) |
 
 ### Advanced (03-Advanced) — 18 notes
 | # | File | Topics Covered |
@@ -145,7 +146,7 @@ Examples must be **runnable** — student should be able to paste into `psql` or
 | 17 | Cloud Databases | Azure Database for PostgreSQL, AWS RDS/Aurora, Cosmos DB, managed-service tradeoffs |
 | 18 | Vector Databases | pgvector, Pinecone, Qdrant; embeddings, similarity search, RAG patterns |
 
-**Total: 48 notes** (10 beginner + 20 intermediate + 18 advanced)
+**Total: 49 notes** (10 beginner + 21 intermediate + 18 advanced)
 
 ---
 

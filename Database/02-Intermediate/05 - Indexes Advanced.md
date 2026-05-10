@@ -215,6 +215,7 @@ CREATE INDEX idx_orders_status_date_cover
 ## See Also
 
 - [[10 - Indexes Basics]]
+- [[21 - B-Tree Internals]] — why the default index sometimes silently isn't used
 - [[06 - Query Optimization]]
 - [[18 - JSON and JSONB]]
 - [[19 - Full-Text Search]]

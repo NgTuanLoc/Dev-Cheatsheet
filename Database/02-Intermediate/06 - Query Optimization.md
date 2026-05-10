@@ -207,6 +207,7 @@ LEFT JOIN order_counts oc ON oc.user_id = u.id;
 
 ## See Also
 
+- [[21 - B-Tree Internals]] — sargability deep dive: why `LIKE '%foo%'`, `LOWER(col)`, and implicit casts skip the index
 - [[05 - Indexes Advanced]]
 - [[09 - Performance Tuning]]
 - [[10 - Window Functions]]

@@ -60,6 +60,7 @@ Schema design, query tuning, transactions, .NET integration.
 | 06 | [[06 - Query Optimization]] |
 | 07 | [[07 - Views]] |
 | 10 | [[10 - Window Functions]] |
+| 21 | [[21 - B-Tree Internals]] |
 
 ### Server-side code
 | # | Note |
