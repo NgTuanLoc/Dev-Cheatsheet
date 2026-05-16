@@ -14,6 +14,7 @@ A multi-topic, structured, teacher-authored cheatsheet/notebook. Each top-level 
 | `Database/` | Databases (PostgreSQL-primary, SQL & NoSQL) | [Database/CLAUDE.md](./Database/CLAUDE.md) |
 | `React/` | React (hooks, RSC, Next.js, Remix, ecosystem) | [React/CLAUDE.md](./React/CLAUDE.md) |
 | `Angular/` | Angular (standalone, signals, RxJS, NgRx) | [Angular/CLAUDE.md](./Angular/CLAUDE.md) |
+| `Azure/` | Azure cloud platform (compute, data, identity, IaC, AI) | [Azure/CLAUDE.md](./Azure/CLAUDE.md) |
 
 ---
 

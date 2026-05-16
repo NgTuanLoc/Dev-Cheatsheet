@@ -32,6 +32,20 @@ level: Advanced
 | `web-vitals` library | Field RUM data |
 | `why-did-you-render` | Logs unnecessary re-renders during dev |
 
+### Lighthouse metrics at a glance
+
+| Metric | What it measures | Good | Needs work | Poor |
+| ------ | ---------------- | ---- | ---------- | ---- |
+| **LCP** (Largest Contentful Paint) | When the biggest above-the-fold element paints | ≤ 2.5s | 2.5–4.0s | > 4.0s |
+| **INP** (Interaction to Next Paint) | Worst event-handler latency in the session (replaced FID in 2024) | ≤ 200ms | 200–500ms | > 500ms |
+| **CLS** (Cumulative Layout Shift) | How much visible content shifts unexpectedly | ≤ 0.1 | 0.1–0.25 | > 0.25 |
+| **FCP** (First Contentful Paint) | First text/image painted | ≤ 1.8s | 1.8–3.0s | > 3.0s |
+| **TBT** (Total Blocking Time) | Main-thread blocking between FCP and TTI | ≤ 200ms | 200–600ms | > 600ms |
+| **Speed Index** | How quickly visible content is populated | ≤ 3.4s | 3.4–5.8s | > 5.8s |
+| **TTFB** (Time to First Byte) | Server response time | ≤ 800ms | 0.8–1.8s | > 1.8s |
+
+> LCP, INP, CLS are the **Core Web Vitals** that affect Google ranking. The rest are diagnostic-only.
+
 ---
 
 ## Core Concept
@@ -158,6 +172,128 @@ useEffect(() => {
   return () => worker.terminate();
 }, [input]);
 ```
+
+---
+
+## Optimizing for Lighthouse — metric by metric
+
+Run Lighthouse from the **Chrome DevTools → Lighthouse panel** (or the standalone extension). Use **Mobile + Simulated throttling** for the default audit — desktop scores hide regressions that hurt real users. Run on a **production build** (`vite build && vite preview`) — dev builds are intentionally slow and skew every number.
+
+### LCP — Largest Contentful Paint
+
+The hero image, headline, or biggest visible block. In React SPAs, LCP is usually killed by **late hydration** of the element that holds it.
+
+React-specific fixes:
+
+- **Server-render the LCP element** (RSC, Next.js, Remix). CSR shows a blank screen until JS arrives — that's a 1–3s LCP tax on its own.
+- **Preload the LCP image** in the document head — `<link rel="preload" as="image" href="/hero.webp" fetchpriority="high">`.
+- Set **`fetchpriority="high"`** on the hero `<img>`; let everything else be `loading="lazy"`.
+- **Do not lazy-load the LCP element.** `React.lazy` + Suspense around the hero adds a chunk waterfall.
+- **Self-host critical fonts** with `font-display: swap` and preload the `.woff2` — webfonts often gate text-LCP.
+- **Inline above-the-fold CSS** at build time (Vite plugins, Next.js does it automatically).
+
+### INP — Interaction to Next Paint
+
+Replaced FID in March 2024. Measures the **worst** event-handler latency over the whole session — one slow click ruins your score.
+
+React-specific fixes:
+
+- Wrap heavy state updates in **`startTransition`** so the click handler returns immediately (see snippet below).
+- Use **`useDeferredValue`** for derived expensive renders driven by typing.
+- **Move CPU-heavy work to a Web Worker** (parsing, fuzzy search, markdown render).
+- **Virtualize long lists** — clicking a row that triggers a 5000-item re-render tanks INP.
+- **Avoid `setState` chains inside the same handler** that each trigger their own render. Batch into one update.
+- **Audit third-party scripts** — analytics/ads often dominate INP. Defer with `<script async defer>` or load post-idle.
+
+```tsx
+const [isPending, startTransition] = useTransition();
+const onSearch = (q: string) => {
+  setQuery(q); // urgent — input stays responsive
+  startTransition(() => setResults(filter(items, q))); // non-urgent
+};
+```
+
+### CLS — Cumulative Layout Shift
+
+Content jumping after first paint. React's hydration mismatches and lazy-loaded images are the usual culprits.
+
+React-specific fixes:
+
+- **Always set explicit `width` and `height`** on `<img>` and `<iframe>` (or `aspect-ratio` in CSS) so the browser reserves space.
+- **Reserve space for async content** with skeleton placeholders of the same dimensions — don't `null` then suddenly render.
+- **Avoid inserting banners/ads above existing content** after mount. Mount them in a fixed-height slot.
+- **Watch SSR/CSR hydration mismatches** — they cause a flash + reflow. Keep server and client output identical; use `useEffect` for client-only content (theme, locale-aware date).
+- **`font-display: optional`** or preloaded fonts prevent FOIT/FOUT layout swaps.
+
+### FCP — First Contentful Paint
+
+When *any* text/image first paints. Bottlenecked by render-blocking JS and CSS.
+
+React-specific fixes:
+
+- **Code-split per route** with `React.lazy` + Suspense (or framework router).
+- **Tree-shake** — verify with `vite build --report` or `rollup-plugin-visualizer`. Drop moment.js → date-fns/dayjs, lodash → lodash-es with named imports.
+- **Defer non-critical JS** (`type="module"` is async by default, but third-party `<script>` often is not).
+- **Server-render the shell** so HTML arrives painted.
+
+### TBT — Total Blocking Time
+
+Sum of main-thread blocks > 50ms during load. This is the lab-side proxy for INP.
+
+React-specific fixes:
+
+- **Smaller bundles** — every 100KB of JS parses for ~100ms on mid-tier mobile.
+- **Hydration cost**: React 18 streaming SSR + selective hydration (or RSC, where most components never hydrate) cuts TBT dramatically.
+- **Split vendor chunks** so the framework chunk caches across deploys.
+- **Avoid top-level work in modules** — heavy `const data = compute()` at import time blocks the main thread before React even mounts.
+
+### Speed Index
+
+Visual progress over time. Improves when LCP, FCP, and CLS improve — there's no separate lever.
+
+### TTFB — Time to First Byte
+
+Server-side, not React. But it caps every other metric.
+
+Fixes:
+
+- Cache HTML at the CDN edge (Vercel/Netlify/Cloudflare).
+- For RSC/SSR, use **streaming** so the first byte is sent before the full render finishes.
+- Avoid waterfall data fetches on the server — parallelize with `Promise.all`.
+
+### Lighthouse "Opportunities" → React translation
+
+| Lighthouse suggestion | React-side action |
+| --------------------- | ----------------- |
+| "Reduce unused JavaScript" | Route-level `React.lazy`, tree-shake, drop dead deps |
+| "Properly size images" | `srcSet` + `sizes`, modern formats (AVIF/WebP), Next.js `<Image>` |
+| "Preconnect to required origins" | `<link rel="preconnect" href="https://api.example.com">` in `<head>` |
+| "Avoid enormous network payloads" | Code-split, compress (brotli), strip source maps from prod |
+| "Minimize main-thread work" | RSC, transitions, workers, virtualization |
+| "Reduce JavaScript execution time" | React Compiler, memoization where profiler shows waste |
+| "Avoid long main-thread tasks" | `startTransition`, `scheduler.yield()` if available |
+| "Eliminate render-blocking resources" | Inline critical CSS, `async`/`defer` on third-party scripts |
+| "Serve images in next-gen formats" | AVIF/WebP via `<picture>` or framework image component |
+| "Ensure text remains visible during webfont load" | `font-display: swap` + preload `.woff2` |
+
+### Tying Lighthouse to field data
+
+Lighthouse is **lab** data — one synthetic run on your machine. Always pair it with **field** data (real users):
+
+```tsx
+import { onCLS, onINP, onLCP, onFCP, onTTFB } from "web-vitals";
+
+const send = (m: { name: string; value: number; id: string }) =>
+  navigator.sendBeacon("/vitals", JSON.stringify(m));
+
+onCLS(send);
+onINP(send);
+onLCP(send);
+onFCP(send);
+onTTFB(send);
+```
+
+Send to Sentry Performance, Vercel Analytics, or your own backend. A green Lighthouse score with a red field INP means your test environment isn't representative.
 
 ---
 
