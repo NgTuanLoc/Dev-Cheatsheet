@@ -118,6 +118,16 @@ aliases: [Roadmap, Curriculum]
 
 ---
 
+## Stage 10 — Production Operations (3–5 days)
+
+**Goal**: When the app is in production and something goes wrong, you reach for the right tool first time — not the third time.
+
+1. [[19 - Production Monitoring and Diagnostics]] — symptom → diagnose → fix playbook for the ten patterns you'll actually see
+
+**Checkpoint**: Pick any one production-style app you've built. Wire up Serilog + OpenTelemetry + `/health` + Application Insights (or Prometheus/Grafana) end-to-end, then induce one of the ten patterns and prove you can diagnose it from telemetry alone.
+
+---
+
 ## Tips for using this path
 
 - **Don't skip Stage 3** — async/threading/memory mistakes cause 80% of production incidents.
