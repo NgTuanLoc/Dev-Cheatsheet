@@ -87,6 +87,18 @@ aliases: [DB Roadmap, DB Curriculum]
 
 ---
 
+## Stage 6.5 — Engine Internals (3–5 days)
+
+**Goal**: Understand how the three engines you're most likely to meet in industry actually work — so the words "MVCC", "transaction log", "oplog", "shard key", "buffer pool" point at concrete machinery instead of folklore.
+
+1. [[22 - PostgreSQL Architecture]] — process model, MVCC, WAL, vacuum, planner
+2. [[23 - SQL Server Architecture]] — SQLOS, buffer pool, plan cache, transaction log, Always On AGs
+3. [[24 - MongoDB Architecture]] — WiredTiger, replica sets + oplog, sharding via mongos
+
+**Checkpoint**: Without re-reading the notes, sketch the write path of a single `UPDATE` for each engine on a whiteboard — including where durability is guaranteed and what fails on a crash.
+
+---
+
 ## Stage 7 — Distribution and Scaling (1–2 weeks)
 
 **Goal**: Understand the tradeoffs when one machine isn't enough.
