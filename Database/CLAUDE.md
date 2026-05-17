@@ -99,7 +99,7 @@ Examples must be **runnable** — student should be able to paste into `psql` or
 | 09 | Constraints | NOT NULL, UNIQUE, CHECK, DEFAULT, FK with ON DELETE/UPDATE |
 | 10 | Indexes Basics | What an index is, B-tree default, when indexes help vs hurt |
 
-### Intermediate (02-Intermediate) — 21 notes
+### Intermediate (02-Intermediate) — 24 notes
 | # | File | Topics Covered |
 |---|------|----------------|
 | 01 | Normalization | 1NF, 2NF, 3NF, BCNF, denormalization tradeoffs |
@@ -123,6 +123,9 @@ Examples must be **runnable** — student should be able to paste into `psql` or
 | 19 | Full-Text Search | tsvector, tsquery, GIN index, ranking, language config |
 | 20 | NoSQL Fundamentals | Document (Mongo), key-value (Redis), wide-column (Cassandra), graph (Neo4j) |
 | 21 | B-Tree Internals | B+tree structure, sargability, prefix vs leading-wildcard `LIKE`, function-wrapped columns, implicit-cast traps, `text_pattern_ops`, fixes (`pg_trgm`, FTS, reverse-string) |
+| 22 | PostgreSQL Architecture | Postmaster + backend processes, shared memory, MVCC, WAL, vacuum, planner, replication topology, comparison with SQL Server and MongoDB |
+| 23 | SQL Server Architecture | SQLOS scheduler, buffer pool + plan cache, pages and extents, transaction log, locking vs RCSI, Always On AGs, columnstore, Hekaton, comparison matrix |
+| 24 | MongoDB Architecture | mongod, WiredTiger, BSON + collections, replica sets and oplog, sharded cluster (mongos + config servers), read/write concerns, transactions, comparison matrix |
 
 ### Advanced (03-Advanced) — 18 notes
 | # | File | Topics Covered |
@@ -146,7 +149,7 @@ Examples must be **runnable** — student should be able to paste into `psql` or
 | 17 | Cloud Databases | Azure Database for PostgreSQL, AWS RDS/Aurora, Cosmos DB, managed-service tradeoffs |
 | 18 | Vector Databases | pgvector, Pinecone, Qdrant; embeddings, similarity search, RAG patterns |
 
-**Total: 49 notes** (10 beginner + 21 intermediate + 18 advanced)
+**Total: 52 notes** (10 beginner + 24 intermediate + 18 advanced)
 
 ---
 
@@ -174,3 +177,6 @@ These notes specifically benefit from diagrams and **must** include one:
 | ETL and CDC | sequenceDiagram (CDC pipeline) |
 | Data Warehousing | erDiagram (star schema) |
 | Vector Databases | graph (embedding + similarity search) |
+| PostgreSQL Architecture | graph + sequenceDiagram (process model + write path) |
+| SQL Server Architecture | graph + sequenceDiagram (SQLOS + write path) |
+| MongoDB Architecture | graph (replica set + sharded cluster) |
