@@ -15,10 +15,10 @@ level: Intermediate
 | Item | Value / Fact |
 |------|--------------|
 | Process model | `postmaster` forks one OS process per client connection |
-| Concurrency control | MVCC — readers never block writers, writers never block readers |
+| Concurrency control | MVCC — plain reads and writes don't block each other (explicit `SELECT FOR UPDATE` and DDL still take locks) |
 | Durability mechanism | Write-Ahead Log (WAL) — flushed before commit returns |
 | Default page size | 8 KB |
-| Storage layout | Heap files per table + per-index B-tree files + TOAST for >2 KB values |
+| Storage layout | Heap files per table + per-index B-tree files + TOAST when a row exceeds ~2 KB (large attributes compressed and/or stored out-of-line) |
 | Default index type | B-tree (B+tree variant) |
 | Background workers | `checkpointer`, `bgwriter`, `walwriter`, `autovacuum launcher/workers`, `archiver`, `logical replication workers` |
 | Default isolation | Read Committed |
@@ -35,7 +35,7 @@ PostgreSQL runs as a **family of cooperating OS processes**, not threads. The `p
 
 Inside shared memory live four critical structures: `shared_buffers` is the page cache holding 8 KB pages; the **WAL buffer** stages log records before flush; the **lock table** records every row, page, and relation lock; the **proc array** lists every active backend and its current transaction ID. Background workers — `bgwriter`, `checkpointer`, `walwriter`, `autovacuum` — read and write these structures without ever holding a client.
 
-Concurrency is **MVCC** (Multi-Version Concurrency Control). An `UPDATE` does not overwrite a row — it inserts a new tuple version and marks the old one with the updating transaction's ID. Readers see whichever version was visible at the start of their snapshot. The consequence: **readers never take row locks and never block writers**, and vice versa. The cost: dead tuples accumulate, and `autovacuum` must continuously reclaim them.
+Concurrency is **MVCC** (Multi-Version Concurrency Control). An `UPDATE` does not overwrite a row — it inserts a new tuple version and marks the old one with the updating transaction's ID. Readers see whichever version was visible at the start of their snapshot. The consequence: **plain reads and writes never block each other** (explicit `SELECT FOR UPDATE` and DDL like `ALTER TABLE` still take blocking locks). The cost: dead tuples accumulate, and `autovacuum` must continuously reclaim them.
 
 Durability is the **WAL**. Every page modification is first appended as a WAL record. On `COMMIT`, the WAL is `fsync`-ed to disk; only later — during a `CHECKPOINT` — does the dirty heap page get written back. If the cluster crashes, recovery replays the WAL from the last checkpoint forward. The WAL is also the substrate for streaming replication, PITR, and logical decoding.
 
@@ -118,7 +118,13 @@ FROM pg_stat_activity
 WHERE state IS NOT NULL
 ORDER BY tx_age DESC NULLS LAST;
 
--- Background writer / checkpointer stats — are checkpoints bursty?
+-- Checkpoint activity — are checkpoints bursty?
+-- Postgres 17+
+SELECT num_timed, num_requested,
+       write_time, sync_time, buffers_written
+FROM pg_stat_checkpointer;
+
+-- Postgres 16 and earlier (column names differ; split into pg_stat_io on 17+)
 SELECT checkpoints_timed, checkpoints_req,
        checkpoint_write_time, checkpoint_sync_time,
        buffers_checkpoint, buffers_clean, buffers_backend
@@ -127,6 +133,7 @@ FROM pg_stat_bgwriter;
 -- WAL-generation rate (Postgres 14+)
 SELECT wal_records, wal_fpi, wal_bytes, wal_buffers_full, wal_write_time, wal_sync_time
 FROM pg_stat_wal;
+-- wal_write_time / wal_sync_time are zero unless track_wal_io_timing = on (off by default).
 
 -- Current memory and WAL settings
 SHOW shared_buffers;     -- e.g. '128MB' (dev default) → '8GB' in prod
@@ -319,7 +326,7 @@ Use logical replication for: cross-version upgrades, selective replication, shar
 - **Long-running transactions hold back the global `xmin` horizon.** While a transaction is open, autovacuum **cannot reclaim** any tuple version that might still be visible to it — even on unrelated tables. A single forgotten `BEGIN` in psql can cause cluster-wide bloat. Hunt them with `SELECT pid, xact_start, query FROM pg_stat_activity WHERE state = 'idle in transaction';`.
 - **The planner uses `ANALYZE` statistics, not live data.** After bulk loads, large deletes, or schema changes, run `ANALYZE table_name;` manually. Stale stats lead the planner to pick `Seq Scan` over a perfectly good index, or to mis-estimate join sizes by orders of magnitude.
 - **`autovacuum` and `ANALYZE` run together by default, but on different triggers.** `ANALYZE` fires on `autovacuum_analyze_scale_factor` (default 10 %), `VACUUM` on `autovacuum_vacuum_scale_factor` (default 20 %). Both can be tuned per table.
-- **TOAST is silent and automatic for values > 2 KB.** Large text / JSONB columns are compressed and stored out-of-line in a sibling TOAST table. Queries that don't reference the large column are unaffected — but `SELECT *` pulls the TOAST entries and amplifies I/O.
+- **TOAST is silent and automatic for rows exceeding ~2 KB.** Large text / JSONB columns are compressed and stored out-of-line in a sibling TOAST table. Queries that don't reference the large column are unaffected — but `SELECT *` pulls the TOAST entries and amplifies I/O.
 
 ---
 
