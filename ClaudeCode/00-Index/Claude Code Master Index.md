@@ -62,6 +62,7 @@ Make Claude fit *your* workflow. Customize commands, add hooks, plug in MCP serv
 | 13 | [[13 - IDE Integration]] |
 | 14 | [[14 - Multi-file Refactoring]] |
 | 15 | [[15 - Model and Cost Optimization]] |
+| 16 | [[16 - Popular Claude GitHub Repos]] |
 
 ---
 

@@ -101,6 +101,7 @@ When showing CLI invocations, use the `claude` binary name (or `cc` if the user 
 | 13 | IDE Integration | VS Code extension, JetBrains, terminal-in-IDE patterns |
 | 14 | Multi-file Refactoring | Large-scale changes, plan-mode-first, incremental commits |
 | 15 | Model and Cost Optimization | Picking Opus / Sonnet / Haiku, caching, context budget |
+| 16 | Popular Claude GitHub Repos | Ecosystem cheat sheet: official SDKs, MCP, Cline/aider/goose, awesome-lists |
 
 ### Advanced (03-Advanced) — 10 notes
 | # | File | Topics Covered |
@@ -116,7 +117,7 @@ When showing CLI invocations, use the `claude` binary name (or `cc` if the user 
 | 09 | Security and Sandboxing | Tool allowlists, network policies, secret leakage, prompt injection |
 | 10 | Prompt Engineering for Code | Patterns: scoping, constraints, examples, anti-leakage |
 
-**Total: 35 notes** (10 beginner + 15 intermediate + 10 advanced)
+**Total: 36 notes** (10 beginner + 16 intermediate + 10 advanced)
 
 ---
 
