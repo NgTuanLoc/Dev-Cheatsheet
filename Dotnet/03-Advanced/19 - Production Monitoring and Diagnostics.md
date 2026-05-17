@@ -66,7 +66,7 @@ graph TD
     subgraph SDK[Telemetry SDKs in-process]
         ILogger[Microsoft.Extensions.Logging<br/>+ Serilog]
         OTel[OpenTelemetry SDK<br/>Tracing + Metrics]
-        HC[HealthChecks middleware<br/>/health, /health/ready]
+        HC["HealthChecks middleware<br/>/health, /health/ready"]
     end
 
     App --> ILogger
@@ -279,7 +279,9 @@ You now get: distributed traces (per request, per dependency), Live Metrics Stre
 ```bash
 # APM: filter requests where duration > P95 in last 1h, sort desc, open the span tree
 # Live counters:
-dotnet-counters monitor -p <PID> --counters Microsoft.AspNetCore.Hosting[total-requests,request-duration]
+dotnet-counters monitor -p <PID> --counters Microsoft.AspNetCore.Hosting,Microsoft.AspNetCore.Server.Kestrel
+# .NET 8+: per-request duration lives in the `http.server.request.duration`
+# histogram (Meter API), not in EventCounters — read it from Prometheus / OTLP / App Insights.
 ```
 
 **Root causes**:
@@ -464,7 +466,13 @@ builder.Services.AddDbContext<AppDb>(o => o.UseSqlServer(connStr));
 
 // Or, for short-lived units of work outside a request scope, use a factory
 builder.Services.AddDbContextFactory<AppDb>(o => o.UseSqlServer(connStr));
-await using var db = await _factory.CreateDbContextAsync(ct);
+
+// Consume the factory inside a service method — always dispose
+public async Task<Order?> GetAsync(int id, CancellationToken ct)
+{
+    await using var db = await _factory.CreateDbContextAsync(ct);
+    return await db.Orders.FindAsync([id], ct);
+}
 
 // Tuning, only after fixing the leak
 // "Server=...;Database=...;Max Pool Size=200;Connection Lifetime=300"
@@ -493,7 +501,7 @@ dotnet-dump analyze hang.dmp
 **Root causes**:
 - Locks acquired in inconsistent order across code paths (A→B in one, B→A in another)
 - Async code under a captured `SynchronizationContext` (UI, legacy ASP.NET) blocking on `.Result`
-- Reentrant `lock` held *across* an `await` — the continuation may resume on a different thread that can't re-enter
+- A `Monitor`-based lock held *across* an `await` (the C# compiler now blocks `lock { await }`, but `Monitor.Enter` / `Monitor.Exit` around `await` still compiles — the continuation may resume on a different thread that can't re-enter). Use `SemaphoreSlim` for any critical section that needs `await` inside it.
 - Two `SemaphoreSlim` instances acquired in opposite orders by two requests
 
 **Fix**:
@@ -622,8 +630,10 @@ app.UseExceptionHandler(errorApp => errorApp.Run(async ctx =>
 # Separate cold from warm with a small load test
 hey -n 1   -c 1  https://api.example/ping       # cold
 hey -n 1000 -c 50 https://api.example/ping      # warm
-# Trace JIT + reflection during startup
-dotnet-trace collect -p <PID> --profile gc-collect --providers Microsoft-Extensions-Logging --duration 00:00:15
+# Trace the first 15s after startup — CPU sampling catches JIT/reflection cost
+dotnet-trace collect -p <PID> --profile cpu-sampling --duration 00:00:15 --format Speedscope
+# For JIT-specific events, add the runtime provider with the JIT keyword (0x10):
+#   dotnet-trace collect -p <PID> --providers Microsoft-Windows-DotNETRuntime:0x10:5 --duration 00:00:15
 ```
 
 **Root causes**:
@@ -674,7 +684,8 @@ For strict cold-start budgets (Functions, edge workloads) consider Native AOT. S
 # On the host:
 iotop -aoP | head             # top processes by accumulated I/O
 ls -lhS /var/log/app | head   # biggest log files
-dotnet-counters monitor -p <PID> --counters Microsoft.Extensions.Logging
+# Microsoft-Extensions-Logging is an EventSource (events, not counters) — capture with dotnet-trace:
+dotnet-trace collect -p <PID> --providers Microsoft-Extensions-Logging --duration 00:00:30
 ```
 
 **Root causes**:
@@ -695,8 +706,9 @@ builder.Services.AddHttpClient<PricingClient>()
     });
 ```
 
+`appsettings.Production.json` — raise verbose categories to Warning in prod:
+
 ```json
-// appsettings.Production.json — raise verbose categories to Warning in prod
 {
   "Logging": {
     "LogLevel": {
