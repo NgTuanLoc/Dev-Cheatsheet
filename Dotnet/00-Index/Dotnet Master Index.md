@@ -115,6 +115,11 @@ Production-grade concerns: design, performance, infrastructure.
 | 17 | [[17 - Docker and Containers]] |
 | 18 | [[18 - CI-CD and DevOps]] |
 
+### Production operations
+| # | Note |
+|---|------|
+| 19 | [[19 - Production Monitoring and Diagnostics]] |
+
 ---
 
 ## Browse by tag
