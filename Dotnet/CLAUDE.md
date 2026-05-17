@@ -99,7 +99,7 @@ Examples must be **minimal and compilable** — student should be able to paste 
 | 19 | Middleware | Pipeline, custom middleware, short-circuiting |
 | 20 | Testing | xUnit, Moq, FluentAssertions, TestServer, integration tests |
 
-### Advanced (03-Advanced) — 18 notes
+### Advanced (03-Advanced) — 19 notes
 | # | File | Topics Covered |
 |---|------|----------------|
 | 01 | Design Patterns | Repository, CQRS, Mediator (MediatR), Factory, Decorator |
@@ -120,8 +120,9 @@ Examples must be **minimal and compilable** — student should be able to paste 
 | 16 | Native Interop and AOT | P/Invoke, DllImport, LibraryImport, Native AOT publishing, trimming |
 | 17 | Docker and Containers | Dockerfile, multi-stage builds, docker-compose, health checks |
 | 18 | CI-CD and DevOps | GitHub Actions, build/test/publish pipeline, environment promotion |
+| 19 | Production Monitoring and Diagnostics | Observability pillars (logs/metrics/traces), OpenTelemetry, Serilog, health checks, dotnet-counters/trace/dump/gcdump, pattern catalog (latency, leaks, CPU, threadpool, connection pool, deadlock, GC pressure, 5xx, cold start, log flood) |
 
-**Total: 48 notes** (10 beginner + 20 intermediate + 18 advanced)
+**Total: 49 notes** (10 beginner + 20 intermediate + 19 advanced)
 
 ---
 
@@ -147,3 +148,4 @@ These notes specifically benefit from diagrams and **must** include one:
 | Microservices | graph (service topology + gateway) |
 | Security and Auth | sequenceDiagram (OAuth2/JWT handshake) |
 | Design Patterns | classDiagram (per pattern) |
+| Production Monitoring and Diagnostics | graph (observability stack — SDKs → exporters → backends → dashboards) |
