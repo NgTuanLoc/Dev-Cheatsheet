@@ -15,9 +15,9 @@ Business/
 ├── CLAUDE.md                    ← this file
 ├── 00-Index/
 │   ├── Business Master Index.md ← single entry point
-│   └── Business Learning Path.md← recommended reading order
+│   └── Business Learning Path.md ← recommended reading order
 ├── 01-Beginner/                 (8 notes — domain primers)
-├── 02-Intermediate/             (8 notes — workflows, integrations, money math)
+├── 02-Intermediate/             (8 notes — workflows, integrations, money math, logistics ops)
 └── 03-Advanced/                 (8 notes — regulated and distributed-system concerns)
 ```
 
