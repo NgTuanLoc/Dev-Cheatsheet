@@ -15,6 +15,7 @@ A multi-topic, structured, teacher-authored cheatsheet/notebook. Each top-level 
 | `React/` | React (hooks, RSC, Next.js, Remix, ecosystem) | [React/CLAUDE.md](./React/CLAUDE.md) |
 | `Angular/` | Angular (standalone, signals, RxJS, NgRx) | [Angular/CLAUDE.md](./Angular/CLAUDE.md) |
 | `Azure/` | Azure cloud platform (compute, data, identity, IaC, AI) | [Azure/CLAUDE.md](./Azure/CLAUDE.md) |
+| `Business/` | Business domains a developer encounters (commerce, finance, logistics) | [Business/CLAUDE.md](./Business/CLAUDE.md) |
 
 ---
 
@@ -44,8 +45,20 @@ A multi-topic, structured, teacher-authored cheatsheet/notebook. Each top-level 
 │   ├── 01-Beginner/
 │   ├── 02-Intermediate/
 │   └── 03-Advanced/
-└── Angular/
-    ├── CLAUDE.md           ← Angular-specific rules + coverage map
+├── Angular/
+│   ├── CLAUDE.md           ← Angular-specific rules + coverage map
+│   ├── 00-Index/
+│   ├── 01-Beginner/
+│   ├── 02-Intermediate/
+│   └── 03-Advanced/
+├── Azure/
+│   ├── CLAUDE.md
+│   ├── 00-Index/
+│   ├── 01-Beginner/
+│   ├── 02-Intermediate/
+│   └── 03-Advanced/
+└── Business/
+    ├── CLAUDE.md           ← Business-specific rules + coverage map
     ├── 00-Index/
     ├── 01-Beginner/
     ├── 02-Intermediate/
