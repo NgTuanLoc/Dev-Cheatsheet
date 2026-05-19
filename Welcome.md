@@ -16,6 +16,7 @@ A structured, teacher-authored cheatsheet vault covering multiple technical topi
 | React (modern, hooks + RSC) | [[React Master Index]] | [[React Learning Path]] | [[01 - React Overview]] |
 | Angular (standalone, signals) | [[Angular Master Index]] | [[Angular Learning Path]] | [[01 - Angular Overview]] |
 | Azure (cloud platform) | [[Azure Master Index]] | [[Azure Learning Path]] | [[01 - Azure Overview]] |
+| Business (developer-facing) | [[Business Master Index]] | [[Business Learning Path]] | [[01 - Business Domain Overview]] |
 
 ---
 
@@ -53,10 +54,14 @@ Every note follows the same structure:
 │   ├── 01-Beginner/    (10 notes — components, templates, DI basics)
 │   ├── 02-Intermediate/ (20 notes — signals, RxJS, forms, routing, testing)
 │   └── 03-Advanced/    (18 notes — internals, zoneless, SSR, NgRx, monorepo)
-└── Azure/           ← Azure (48 notes, cloud platform)
-    ├── 01-Beginner/    (10 notes — resources, identity, compute/storage/networking basics)
-    ├── 02-Intermediate/ (20 notes — App Service, Functions, AKS, SQL/Cosmos, messaging, IaC)
-    └── 03-Advanced/    (18 notes — landing zones, observability, security, multi-region, AI)
+├── Azure/           ← Azure (48 notes, cloud platform)
+│   ├── 01-Beginner/    (10 notes — resources, identity, compute/storage/networking basics)
+│   ├── 02-Intermediate/ (20 notes — App Service, Functions, AKS, SQL/Cosmos, messaging, IaC)
+│   └── 03-Advanced/    (18 notes — landing zones, observability, security, multi-region, AI)
+└── Business/        ← Business domains (24 notes — finance, commerce, logistics)
+    ├── 01-Beginner/    ( 8 notes — domain primers)
+    ├── 02-Intermediate/( 8 notes — workflows, integrations, money math)
+    └── 03-Advanced/    ( 8 notes — regulated and distributed-system concerns)
 ```
 
 For shared authoring conventions see `CLAUDE.md` at vault root; per-topic rules live in each topic folder's own `CLAUDE.md`.
